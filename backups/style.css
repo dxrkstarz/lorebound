@@ -1,0 +1,63 @@
+html,
+body {
+    background-color: #1c1c1c;
+    color: #fff;
+}
+
+.card {
+    padding: 20px;
+    background-color: #202020;
+}
+
+/* stats */
+.statcontainer {
+    height: 30px;
+    border: transparent;
+    border-radius: 3px;
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+}
+
+.statbar {
+    width: 100%;
+    border: transparent;
+    border-radius: 3px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#hpbar {
+    background-color: rgb(246, 34, 34);
+}
+
+#manabar {
+    background-color: rgb(34, 136, 246);
+}
+
+#xpbar {
+    background-color: rgb(133, 34, 246);
+}
+.notSelected {
+    border: 1px solid #fff;
+    border-radius: 3px;
+    background-color: transparent;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button.notSelected:hover {
+    border: #00d7c2 1px solid;
+    background-color: #00d7c2;
+    border-radius: 3px;
+    cursor:pointer;
+}
+button.isSelected {
+    border: #06f6de 1px solid;
+    background-color: #06f6de;
+    border-radius: 3px;
+    color:#fff;
+}
