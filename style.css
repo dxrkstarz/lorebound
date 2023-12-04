@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
 html,
 body {
     background-color: #1c1c1c;
@@ -10,15 +12,6 @@ body {
 }
 
 /* stats */
-.statcontainer {
-    height: 30px;
-    border: transparent;
-    border-radius: 3px;
-    display: flex;
-    justify-content: baseline;
-    align-items: center;
-}
-
 .statbar {
     width: 100%;
     border: transparent;
@@ -41,6 +34,7 @@ body {
 #xpbar {
     background-color: rgb(133, 34, 246);
 }
+
 .notSelected {
     border: 1px solid #fff;
     border-radius: 3px;
@@ -50,15 +44,39 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 button.notSelected:hover {
     border: #00d7c2 1px solid;
     background-color: #00d7c2;
     border-radius: 3px;
-    cursor:pointer;
+    cursor: pointer;
 }
+
 button.isSelected {
     border: #06f6de 1px solid;
     background-color: #06f6de;
     border-radius: 3px;
-    color:#fff;
+    color: #fff;
+}
+
+select {
+    color: #fff;
+    background-color: #202020;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+    transition: 0.3s ease;
+}
+
+select:hover {
+    background-color: #232323;
+}
+
+option {
+    color: #fff;
+    background-color: #202020;
+    transition:400ms ease;
+}
+option:hover {
+    background-color: #232323;
 }

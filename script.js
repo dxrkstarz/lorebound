@@ -1,99 +1,84 @@
-//player
-let player = {
-    username:'dxrk',
-    level:1,
-    xpReqired:20,
-    xp:0,
-    class:'Mage',
-    race:'Human'
+const player = {
+  username: "Ryu",
+  level: 1,
+  race: "Human",
+  class: "Swordsman",
+  maxhealth: 100,
+  maxmana: 100,
+  maxstamina: 40,
+  xpRequired: 30,
+  hp: this.maxhealth,
+  mp: this.maxmana,
+  stm: this.maxstamina,
+  stats:{
+    atk:10,
+    def:10,
+    dex:10,
+    int:10,
+    faith:10,
+    luck:10,
+    charisma:10,
+  }
+};
+switch (player.race) {
+  case "Human":
+    player.maxhealth = 100;
+    player.maxmana = 50;
+    player.atk = 20;
+    player.def = 10;
+    player.int = 8;
+    break;
+  case "Lizardman":
+    player.maxhealth = 125;
+    player.maxmana = 40;
+    player.atk = 40;
+    player.def = 20;
+    player.int = 4
+    break
+
 }
-//enemy logic
-class Enemy {
-    constructor() {
-        this.race = races[math.floor(math.random() * 9)];
-        this.hp = 75;
-        this.level = 1;
-        this.ATK = 25;
-        this.DEF = 15;
-        this.critical = this.ATK * 1.75;
-        this.type = ranks[math.floor(math.random() * 1)];
-        this.reward = 20;
+switch (player.class) {
+  case "Swordsman":
+    player.maxhealth = math.floor(player.maxhealth * 1.285);
+    player.maxmana = math.floor(player.maxmana * 0.75);
+    player.atk = math.floor(player.maxhealth * 2.5);
+    player.def = math.floor(player.def * 1.2);
+    player.int = math.floor(player.int * 0.5);
+    break;
+  case "Mage":
+    player.maxhealth = math.floor(player.maxhealth * 1.25);
+    player.maxmana = math.floor(player.maxmana * 2);
+    player.atk = math.floor(player.maxhealth * 1.2);
+    player.def = math.floor(player.def * 0.875);
+    player.int = math.floor(player.int * 2.5);
+    break;
+};
 
-        switch (this.rank) {
-            case 'Minion':
-                this.reward = math.floor(this.reward * 1);
-                this.hp = math.floor(this.hp * 1)
-                this.ATK = math.floor(this.ATK * 1)
-                this.DEF = math.floor(this.DEF * 1)
-                break;
-            case 'Fighter':
-                this.reward = math.floor(this.reward * 3);
-                this.hp = math.floor(this.hp * 1.5)
-                this.ATK = math.floor(this.ATK * 3)
-                this.DEF = math.floor(this.DEF * 1.5)
-                break;
-            case 'Defender':
-                this.reward = math.floor(this.reward * 3);
-                this.hp = math.floor(this.hp * 3);
-                this.ATK = math.floor(this.ATK * 1.5);
-                this.DEF = math.floor(this.DEF * 3);
-                break;
-            case 'Miniboss':
-                this.reward = math.floor(this.reward * 5);
-                this.hp = math.floor(this.hp * 5);
-                this.ATK = math.floor(this.ATK * 5);
-                this.DEF = math.floor(this.DEF * 5);
-                break
-            case 'Boss':
-                this.reward = math.floor(this.reward * 10);
-                this.hp = math.floor(this.hp * 10);
-                this.ATK = math.floor(this.ATK * 10);
-                break
+var item1 = {
+  name: "HP Pot",
+  class: "Consumeable",
+};
+const healthbar = document.getElementById("hpbar");
+const manabar = document.getElementById("mpbar");
+const stmbar = document.getElementById("stmbar");
+const xpbar = document.getElementById("xpbar");
 
-        }
-    }
-}
+hpbar.innerHTML = player.hp + "/" + player.maxhealth;
+manabar.innerHTML = player.mp + "/" + player.maxmana;
 
+xpbar.innerHTML = player.xp + "/" + player.xpRequired;
 
-//inner text
-document.getElementById('name').innerHTML = player.username;
-document.getElementById('leveltext').innerHTML = player.level;
-document.getElementById('classtext').innerHTML = player.class;
-document.getElementById('hpbar').innerHTML = player.hp + '/' + player.maxHP;
-document.getElementById('manabar').innerHTML = player.mana + '/' + player.maxMANA;
-document.getElementById('xpbar').innerHTML = player.xp + '/' + player.xpRequired;
+hpbar.style.width = math.floor(player.hp / player.maxhealth);
+manabar.style.width = math.floor(player.mp / player.maxmana);
+xpbar.style.width = math.floor(player.xp / player.xpRequired);
 
-//widths
-document.getElementById('hpbar').style = math.floor(player.hp / player.maxHP);
-document.getElementById('manabar').style = math.floor(player.mana / player.maxMANA);
-document.getElementById('xpbar').style.width = math.floor(player.xp / player.xpReqired);
+document.getElementById("racedisplay").innerHTML = player.race + " " + player.class;
+document.getElementById("leveldisplay").innerHTML = "Level " + player.level;
+document.getElementById("namedisplay").innerHTML = player.username;
 
-//enemy logic
-
-//classes
-const races = [
-    'Goblins', 'Orcs', 'Lizardman',
-    'Elf', 'Human', 'Dwarf',
-    'Undead', 'Animal',
-];
-
-const classes = [
-    'Swordsman', 'Mage', 'Bard',
-    'Druid', 'Fighter', 'Archer',
-    'Samurai', 'Monk', 'Defender',
-    'Paladin'
-];
-const ranks = [
-    'Minion', 'Fighter', 'Defender', 'Miniboss', 'Boss'
-];
-const spellNames = [
-    'Mana Beam', 'Mana Burst', 'Mana Rain'
-];
-document.getElementById('').onclick = function getClass() {
-    document.getElementById('').class = 'buttonSelected';
-}
-
-
-if (xp > xpReqired) {
-    xp = 0;
-}
+document.getElementById("item1").onmouseover = function () {
+  document.getElementById("iteminfo").style.display = "block";
+  document.getElementById("itemname").innerHTML = item1.name;
+  document.getElementById("itemclass").innerHTML = item1.class;
+};
+var fightBtn = document.getElementById("fightButton");

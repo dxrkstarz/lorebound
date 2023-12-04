@@ -1,85 +1,82 @@
-document.getElementById('submitname').onclick = getName();
-function getName() {
-    player.username = document.getElementById('entername').value;
-}
-let player = {
-    username: getName(),
-    class:getClass
-};
-//inner text
-document.getElementById('name').innerHTML = player.username;
-document.getElementById('lvltext').innerHTML = player.lvl;
-document.getElementById('classtext').innerHTML = player.class;
-document.getElementById('hpbar').innerHTML = player.hp + '/' + player.maxHP;
-document.getElementById('manabar').innerHTML = player.mana + '/' + player.maxMANA;
-document.getElementById('xpbar').innerHTML = player.xp + '/' + player.xpRequired;
-
-//widths
-document.getElementById('hpbar').style = math.floor(player.hp / player.maxHP);
-document.getElementById('manabar').style = math.floor(player.mana / player.maxMANA);
-document.getElementById('xpbar').style.width = math.floor(player.xp / player.xpReqired);
-
-//enemy logic
-function enemy(race, rank, lvl, hp, ATK, DEF, INT, reward) {
-    this.race = races.indexOf(math.floor(math.random() * 9));
-    this.hp = 75;
-    this.lvl = 1;
-    this.ATK = 25;
-    this.DEF = 15;
-    this.critical = this.ATK * 1.75;
-    this.type = ranks.indexOf(math.floor(math.random() * 1));
-    this.reward = 20;
-
-    if (this.rank = 'Minion') {
-        this.reward = math.floor(this.reward * 1);
-        this.hp = math.floor(this.hp * 1)
-        this.ATK = math.floor(this.ATK * 1)
-        this.DEF = math.floor(this.DEF * 1)
-    }
-    if (this.rank = 'Fighter') {
-        this.reward = math.floor(this.reward * 3);
-        this.hp = math.floor(this.hp * 1.5)
-        this.ATK = math.floor(this.ATK * 3)
-        this.DEF = math.floor(this.DEF * 1.5)
-
-    }
-    if (this.rank = 'Defender') {
-        this.reward = math.floor(this.reward * 3);
-        this.hp = math.floor(this.hp * 3)
-        this.ATK = math.floor(this.ATK * 1.5)
-        this.DEF = math.floor(this.DEF * 3)
-    }
-    if (this.rank = 'Miniboss') {
-        this.reward = math.floor(this.reward * 5);
-        this.hp = math.floor(this.hp * 5)
-        this.ATK = math.floor(this.ATK * 5)
-        this.DEF = math.floor(this.DEF * 5)
-    }
-    if (this.rank = 'Boss') {
-        this.reward = math.floor(this.reward * 10)
-        this.hp = math.floor(this.hp * 10)
-        this.ATK = math.floor(this.ATK * 10)
-    }
-}
-//classes
-const races = [
-    'Goblins', 'Orcs', 'Elf',
-    'Lizardfolk', 'Human', 'Dwarf',
-    'Undead', 'Animal',
-];
-
-const classes = [
-    'Swordsman', 'Mage', 'Bard',
-    'Druid', 'Fighter', 'Archer',
-    'Samurai', 'Monk', 'Defender', 
-    'Paladin'
-];
-const ranks = [
-    'Minion', 'Fighter', 'Defender', 'Miniboss', 'Boss'
-];
-const spellNames = [
-    'Mana Beam', 'Mana Burst', 'Mana Rain'
-];
-document.getElementById('').onclick = function getClass() {
-    document.getElementById('').class = 'buttonSelected';
-}
+const player = {
+    username: "Ryu",
+    level: 1,
+    race: "Human",
+    class: "Swordsman",
+    maxhp: 100,
+    maxmp: 100,
+    maxstm: 40,
+    xpRequired: 30,
+    hp: this.maxhp,
+    mp: this.maxmp,
+    stm: this.maxstm,
+    xp: 0,
+    atk: 50,
+    int: 8,
+    attacks: {
+      attack1: {
+        name: "Sword Slash",
+        damage: math.floor(player.atk * 1),
+        cd: 1,
+        mpcost: 0,
+        stmcost: 4,
+      },
+      attack2: {
+        name: "Sword Burst",
+        damage: math.floor(player.atk * 1.25),
+        cd: 3,
+        mpcost: 0,
+        stmcost: 6,
+      },
+      attack3: {
+        name: "Sword Dance",
+        damage: math.floor(player.atk * 2.5),
+        cd: 12,
+        mpcost: 12,
+        stmcost: 4,
+      },
+    },
+  };
+  switch (player.race) {
+    case "Human":
+      player.maxhp = 100;
+      player.maxmp = 50;
+      player.atk = 20;
+      player.def = 10;
+      player.int = 8;
+      break;
+  }
+  switch (player.class) {
+    case "Swordsman":
+      player.maxhp = math.floor(player.maxhp * 1.285);
+      player.maxmp = math.floor(player.maxmp * 0.75);
+      player.atk = math.floor(player.maxhp * 2.5);
+      player.def = math.floor(player.def * 1.2);
+      player.int = math.floor(player.int * 0.5);
+      break;
+    case "Mage":
+      player.maxhp = math.floor(player.maxhp * 1.25);
+      player.maxmp = math.floor(player.maxmp * 2);
+      player.atk = math.floor(player.maxhp * 1.2);
+      player.def = math.floor(player.def * 0.875);
+      player.int = math.floor(player.int * 2.5);
+      break;
+  }
+  var item1 = {
+      name:'HP Pot',
+      class:'Consumeable',
+  }
+  document.getElementById("hpbar").innerHTML = player.hp + "/" + player.maxhp;
+  document.getElementById("mpbar").innerHTML = player.mp + "/" + player.maxmp;
+  document.getElementById("xpbar").innerHTML =
+    player.hp + "/" + player.xpRequired;
+  document.getElementById("racedisplay").innerHTML =
+    player.race + " " + player.class;
+  document.getElementById("leveldisplay").innerHTML = "Level " + player.level;
+  document.getElementById("namedisplay").innerHTML = player.username;
+  
+  document.getElementById("item1").onmouseover = function () {
+    document.getElementById("itemname").innerHTML = item1.name
+    document.getElementById("itemclass").innerHTML = item1.class
+  };
+  

@@ -1,30 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Lorebound</title>
 </head>
-
 <body>
-    <div class="card" id="playerstats">
-        <h2 id="nameDisplay"></h2>
-        <h3 id="classDisplay"></h3>
-        <div class="statbar">
-            <div id="hpbar"></div>
-        </div>
-        <div class="statbar">
-            <div class="manabar"></div>
-        </div>
-        <div class="statbar">
-            <div class="xpbar"></div>
-        </div>
+    <!-- PLAYERSTATS -->
+    <div class="card">
+        <h1 id="namedisplay"></h1>
+        <h2 id="racedisplay"></h2>
+        <h2 id="leveldisplay"></h2>
+        <div class="statbar" id="hpbar"></div>
+        <div class="statbar" id="mpbar"></div>
+        <div class="statbar" id="stmbar"></div>
+        <div class="statbar" id="xpbar"></div>
+    </div>
+    <!-- WRAPPERS -->
+    <div class="card" id='iteminfo' style="display:none;">
+        <h3 id="itemname"></h3>
+        <h4 id="itemclass"></h4>
+        <h5 id="itemdescription"></h5>
+    </div>
+    <div class="card" id="class-select">
+        <select name="classselect" id="class-select-dropdown" aria-placeholder="select a class">
+            <optgroup label="Stage 1 Classes">
+                <option value="Swordsman">Swordsman</option>
+                <option value="Mage">Mage</option>
+                <option value="Cleric">Cleric</option>
+            </optgroup>
+            <optgroup label="Stage 2 Classes">
+                <option value="Paladin">Paladin</option>
+                <option value="Druid">Druid</option>
+                <option value=""></option>
+            </optgroup>
+        </select>
+        <button type="submit" name="submitClass"></button>
     </div>
 
-    <div class="card" id="enemystats">
-        <div class="statbar"></div>
-    </div>
+    <script src="/script.js"></script>
 </body>
-
 </html>
